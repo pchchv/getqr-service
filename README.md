@@ -1,2 +1,1 @@
-# getqr
-HTTP service for qr code creation
+# HTTP service for qr code creation
