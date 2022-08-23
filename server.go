@@ -8,5 +8,5 @@ import (
 
 func server() {
 	e := echo.New()
-	log.Fatal(e.Start(":"))
+	log.Fatal(e.Start(":" + getEnvValue("PORT")))
 }
