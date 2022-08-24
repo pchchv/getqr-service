@@ -23,7 +23,7 @@ func getEnvValue(v string) string {
 	return value
 }
 
-func getQR() string {
+func getQR(data string) string {
 	var qrPath string
 	// TODO: Implement getting a QR code
 	// TODO: Implement saving a qr code file

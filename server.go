@@ -15,7 +15,8 @@ func pingHandler(c echo.Context) error {
 }
 
 func getQRHandler(c echo.Context) error {
-	qr := getQR()
+	d := c.QueryParam("data")
+	qr := getQR(d)
 	return c.File(qr)
 }
 
