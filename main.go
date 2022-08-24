@@ -2,9 +2,15 @@ package main
 
 import (
 	"log"
+	"net/http"
 	"os"
 
 	"github.com/joho/godotenv"
+)
+
+var (
+	testURL    string
+	testClient http.Client
 )
 
 func init() {
