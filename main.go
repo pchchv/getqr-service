@@ -16,15 +16,15 @@ var (
 	testClient http.Client
 )
 
+// Load values from .env into the system
 func init() {
-	// Load values from .env into the system
 	if err := godotenv.Load(); err != nil {
 		log.Panic("No .env file found")
 	}
 }
 
+// Getting a value. Outputs a panic if the value is missing
 func getEnvValue(v string) string {
-	// Getting a value. Outputs a panic if the value is missing.
 	value, exist := os.LookupEnv(v)
 	if !exist {
 		log.Panicf("Value %v does not exist", v)
@@ -32,7 +32,7 @@ func getEnvValue(v string) string {
 	return value
 }
 
-func getQR(data string) (string, string) {
+func getQR(data string) string {
 	name := strings.Split(strings.Split(data, "/")[2], ".")[0]
 	err := getqr.WriteFile(data, getqr.Medium, 256, name+".png")
 	if err != nil {
@@ -42,7 +42,7 @@ func getQR(data string) (string, string) {
 	if err != nil {
 		log.Panic(err)
 	}
-	return qrPath, name
+	return qrPath
 }
 
 func main() {
