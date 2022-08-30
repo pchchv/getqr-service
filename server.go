@@ -34,7 +34,7 @@ func routes(e *echo.Echo) {
 	e.GET("/", pingHandler)
 	e.GET("/ping", pingHandler)
 	e.GET("/qr", getQRHandler)
-	e.DELETE("/delete", deleteHandler)
+	e.DELETE("/qr", deleteHandler)
 }
 
 func server() {
