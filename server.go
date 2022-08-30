@@ -3,6 +3,7 @@ package main
 import (
 	"log"
 	"net/http"
+	"os"
 
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
@@ -21,7 +22,10 @@ func getQRHandler(c echo.Context) error {
 }
 
 func deleteHandler(c echo.Context) error {
-	deleter()
+	err := os.Remove(".png")
+	if err != nil {
+		return c.String(http.StatusNotModified, "Files are not deleted")
+	}
 	return c.NoContent(http.StatusOK)
 }
 
