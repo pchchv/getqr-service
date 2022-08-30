@@ -4,8 +4,11 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"path/filepath"
+	"strings"
 
 	"github.com/joho/godotenv"
+	"github.com/pchchv/getqr"
 )
 
 var (
@@ -29,11 +32,17 @@ func getEnvValue(v string) string {
 	return value
 }
 
-func getQR(data string) string {
-	var qrPath string
-	// TODO: Implement getting a QR code
-	// TODO: Implement saving a qr code file
-	return qrPath
+func getQR(data string) (string, string) {
+	name := strings.Split(strings.Split(data, "/")[2], ".")[0]
+	err := getqr.WriteFile(data, getqr.Medium, 256, name+".png")
+	if err != nil {
+		log.Panic(err)
+	}
+	qrPath, err := filepath.Abs(filepath.Base("qr.png"))
+	if err != nil {
+		log.Panic(err)
+	}
+	return qrPath, name
 }
 
 func main() {
