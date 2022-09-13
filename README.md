@@ -38,12 +38,12 @@ go test
         data — Data to be encoded into a qr code
 
     example: 
-        "GET" :8000/todo?data=https://github.com/pchchv
+        "GET" :8080/qr?data=https://github.com/pchchv
 ```
 
 ```
-"DELETE" /qr — Delete a todo
+"DELETE" /qr — Delete all QR Codes
 
     example: 
-        "DELETE" :8000/qr
+        "DELETE" :8080/qr
 ```
